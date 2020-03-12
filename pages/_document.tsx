@@ -33,7 +33,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <GlobalStyle />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="preload"
@@ -43,6 +42,7 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
+          <GlobalStyle />
           <Main />
           <NextScript />
         </body>

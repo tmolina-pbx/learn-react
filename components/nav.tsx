@@ -10,6 +10,7 @@ const StyledUL = styled.ul`
 `
 
 const StyledNav = styled.nav`
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;

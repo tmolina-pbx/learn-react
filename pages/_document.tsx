@@ -1,10 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { GlobalStyle } from '../components/GlobalStyles'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
@@ -42,7 +40,6 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body>
-          <GlobalStyle />
           <Main />
           <NextScript />
         </body>

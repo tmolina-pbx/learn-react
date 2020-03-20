@@ -15,10 +15,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-    border: 1px red solid;
   }
   ol, ul {
     list-style: none;

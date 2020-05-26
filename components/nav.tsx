@@ -11,14 +11,15 @@ const StyledUL = styled.ul`
   color: white;
   position: absolute;
   height: 100vh;
-  width: 80%;
+  width: 40%;
+  /* max-width: 320px; */
   top: 0;
   background: white;
-  left: -90%;
-  transition: transform 0.3s cubic-bezier(0.73, -0.2, 0.13, 0.99);
+  left: -40%;
+  transition: transform 0.3s ease-in-out;
 
   &.is-active {
-    transform: translateX(110%);
+    transform: translateX(100%);
   }
 
   @media only screen and (min-width: 600px) {
@@ -33,7 +34,7 @@ const StyledAnchor = styled.a`
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 
   @media only screen and (min-width: 600px) {
-    color: white;
+    color: black;
     border: 0;
   }
 `
@@ -47,76 +48,103 @@ const StyledNav = styled.nav`
 `
 
 const StyledMenuButton = styled.button`
-  display: block;
-  width: 30px;
-  height: 4px;
-  background: white;
-  text-indent: -9999px;
-  position: relative;
-  margin: 24px;
-  border-radius: 1px;
-
-  &::before,
-  &::after {
-    position: absolute;
-    content: '';
-    bottom: -10px;
-    background: white;
+  span {
+    display: block;
     width: 30px;
     height: 4px;
-    display: block;
+    background: #e7c6a3;
+    text-indent: -9999px;
+    position: relative;
+    margin: 24px;
     border-radius: 1px;
-  }
 
-  &::after {
-    top: -10px;
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: -10px;
+      background: #e7c6a3;
+      width: 30px;
+      height: 4px;
+      display: block;
+      border-radius: 1px;
+    }
+
+    &::after {
+      top: -10px;
+    }
   }
 `
 
 const StyledMenuButtonClose = styled.button`
-  display: block;
-  width: 30px;
-  height: 4px;
-  background: white;
-  text-indent: -9999px;
   position: absolute;
-  border-radius: 1px;
   top: 30px;
-  right: -40px;
+  right: -70px;
 
-  &::before,
-  &::after {
-    position: absolute;
-    content: '';
-    bottom: -10px;
-    background: white;
+  span {
+    display: block;
     width: 30px;
     height: 4px;
-    display: block;
+    background: #e7c6a3;
+    text-indent: -9999px;
     border-radius: 1px;
-  }
+    position: relative;
+    margin: 24px;
 
-  &::after {
-    top: -10px;
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: -10px;
+      background: #e7c6a3;
+      width: 30px;
+      height: 4px;
+      display: block;
+      border-radius: 1px;
+    }
+
+    &::after {
+      top: -10px;
+    }
   }
+`
+
+const StyledImage = styled.img`
+  display: block;
+  width: 100%;
+  max-width: 60px;
+
+  @media only screen and (min-width: 600px) {
+    max-width: 120px;
+  }
+`
+
+const StyledNavBar = styled.div`
+  background: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `
 
 const StyledLi = styled.li``
 
-const Nav = props => {
+const Nav = (props) => {
   const [isOpen, setOpen] = useState(false)
   return (
     <StyledNav {...props}>
-      <img src="http://lacaseriadetito.com/wp-content/uploads/2013/10/logo2.png" />
-      {!isOpen && (
-        <StyledMenuButton
-          onClick={() => {
-            setOpen(true)
-          }}
-        >
-          Open
-        </StyledMenuButton>
-      )}
+      <StyledNavBar>
+        <StyledImage src="http://lacaseriadetito.com/wp-content/uploads/2013/10/logo2.png" />
+
+        {!isOpen && (
+          <StyledMenuButton
+            onClick={() => {
+              setOpen(true)
+            }}
+          >
+            <span>Open</span>
+          </StyledMenuButton>
+        )}
+      </StyledNavBar>
 
       <StyledUL className={isOpen ? 'is-active' : ''}>
         {isOpen && (
@@ -125,7 +153,9 @@ const Nav = props => {
               onClick={() => {
                 setOpen(false)
               }}
-            ></StyledMenuButtonClose>
+            >
+              <span>Close</span>
+            </StyledMenuButtonClose>
           </StyledLi>
         )}
         <StyledLi>
